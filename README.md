@@ -1,3 +1,11 @@
+Eevee installer:
+```bash
+wget https://raw.githubusercontent.com/AussieEevee/ArchMatic/master/archmatic.sh
+sh archmatic.sh
+reboot
+```
+
+
 # Titus ArchMatic Installer Script
 
 <img src="https://i.imgur.com/Yn29sze.png" />
