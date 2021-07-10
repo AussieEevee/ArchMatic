@@ -47,7 +47,7 @@ function setup {
     echo "-------------------------------------------------"
     pacman -S --noconfirm pacman-contrib curl
     mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-    curl -s "https://www.archlinux.org/mirrorlist/?country=US&protocol=https&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 - > /etc/pacman.d/mirrorlist
+    curl -s "https://www.archlinux.org/mirrorlist/?country=AU&protocol=https&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 - > /etc/pacman.d/mirrorlist
 
     echo "-------------------------------------------------"
     echo "              makepkg configuration              "
@@ -65,7 +65,7 @@ function setup {
     echo "-------------------------------------------------"
     sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
     locale-gen
-    timedatectl --no-ask-password set-timezone America/Chicago
+    timedatectl --no-ask-password set-timezone Australia/Perth
     timedatectl --no-ask-password set-ntp 1
     localectl --no-ask-password set-locale LANG="en_US.UTF-8" LC_COLLATE="" LC_TIME="en_US.UTF-8"
 
@@ -93,13 +93,9 @@ function baseSetup {
             'mesa'                  # Open source version of OpenGL
 
         # --- Setup Desktop
-            'awesome'               # Awesome Desktop
-            'xfce4-power-manager'   # Power Manager 
-            'rofi'                  # Menu System
-            'picom'                 # Translucent Windows
-            'xclip'                 # System Clipboard
-            'gnome-polkit'          # Elevate Applications
-            'lxappearance'          # Set System Themes
+            'kde-plasma-desktop' # The Desktop
+            'kwin' # The Window Manager
+            'system-settings' # Setting manager
 
         # --- Login Display Manager
             'lightdm'                   # Base Login Manager
@@ -203,10 +199,11 @@ function softwareSetup {
         'flameshot'             # Screenshots
         'freerdp'               # RDP Connections
         'libvncserver'          # VNC Connections
-        'nautilus'              # Filesystem browser
+        #'nautilus'              # Filesystem browser
         'remmina'               # Remote Connection
         'veracrypt'             # Disc encryption utility
         'variety'               # Wallpaper changer
+        'firefox' # Web browser
 
         # DEVELOPMENT ---------------------------------------------------------
 
